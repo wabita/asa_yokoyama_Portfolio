@@ -1,0 +1,275 @@
+@font-face {
+  font-family: 'BokuFont';
+  src: url('../fonts/Boku2-Bold.otf');
+}
+
+@font-face {
+  font-family: 'YDW'; 
+  src: url('../fonts/YDWbananaslipplus.otf'); 
+}
+
+@font-face {
+  font-family: 'SenobiGothic'; 
+  src: url('../fonts/Senobi-Gothic-Regular.ttf') format('truetype'); 
+}
+
+/* ======== 全体のスタイル ======== */
+body {
+    font-family:'YDW','BokuFont', "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    background-color:#fdf6e3;
+    color: #e41d1de0; 
+    line-height: 1.7; 
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px; /* サイトの最大幅を指定 */
+    margin: 0 auto; /* 中央揃えにする */
+}
+
+/* ======== パーツのスタイル ======== */
+.card {
+    background-color: #fff;
+    border: 2px solid #db1e1e;
+    border-radius: 10px; /* 枠線の角を少し丸く */
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.1); /* 少し影をつける */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between; /* 要素を両端に配置 */
+    align-items: center; /* 要素の縦位置を中央に */
+    border-bottom: 2px dashed #ccc; /* 点線の下線 */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.header h1 {
+    font-family: 'YDW','SenobiGothic','BokuFont','Comic Sans MS', cursive, sans-serif; /* 手書き風フォント */
+    font-size: 2.5em;
+    margin: 0;
+}
+
+
+/* 　=======上部セクションのレイアウト ======== */
+.top-section {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    /* ★変更：min-heightを削除し、flexboxの自動高さ調整に任せる */
+    align-items: center;
+}
+.profile-table-card { 
+    flex: 3; 
+} 
+.right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.illustration-card, .skills-card {
+    flex-grow: 0; 
+}
+.illustration-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skills-card { 
+    min-width: 200px; 
+}
+
+
+/* ===左側のコンテナ ===*/
+/* プロフィール表 */
+.profile-table-wrapper {
+    border: 2px solid #db1e1e; 
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.1); 
+}
+.profile-table {
+    width: 100%;
+    border-collapse: collapse; 
+}
+.profile-table th,
+.profile-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #db1e1e;
+}
+.profile-table tr:last-child th,
+.profile-table tr:last-child td {
+    border-bottom: none;
+}
+.profile-table th {
+    width: 120px;
+    background-color: #f0caa6;
+    color: #db1e1e;
+    font-weight: bold;
+    border-right: 1px solid #db1e1e;
+}
+
+/* ===右側のコンテナ ===*/
+/* アイコン画像 */
+.illustration img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* スキル*/
+.skills-card h3 {
+    margin-top: 0;      
+    margin-bottom: 5px; 
+}
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+}
+/* スキルリストのアイコン */
+.skills-list i {
+    font-size: 11px; 
+    margin-right: 1px; 
+    vertical-align: middle; /
+}
+
+
+/* ======== 縦型タイムラインのデザイン ======== */
+/* タイムライン全体を囲むコンテナ */
+.timeline-container {
+    position: relative;
+    padding-left: 50px;
+    margin-left: 10px;
+    font-family:'SenobiGothic','YDW','BokuFont', "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+}
+
+/* タイムラインの縦線 */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 20px; /* 基準となる線の位置 */
+    top: 10px;
+    bottom: 10px;
+    width: 3px;
+    background-color: #db1e1e;
+}
+
+/* 各年代のブロック */
+.timeline-item {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+/* 年号のスタイル */
+.timeline-item::before {
+    content: attr(data-year);
+    position: absolute;
+    left: -30px;
+    transform: translateX(-50%);
+    top: 2px;
+    background-color: #ffffff; 
+    padding: 0 5px;
+    color: #db1e1e;
+    font-size: 1.3em;
+    font-weight: bold;
+    width: max-content;
+}
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+
+.image-row {
+    display: flex; 
+    gap: 10px;     
+    margin-top: 15px;
+    justify-content: center;
+}
+.image-row .project-image {
+    width: 30%; 
+    object-fit: contain; 
+    margin: 0; 
+    max-width: none;
+}
+
+
+.timeline-item .toggle-trigger {
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: color 0.2s;
+    padding-left: 15px; 
+    text-decoration: underline;  
+    color: inherit; 
+}
+.timeline-item .toggle-trigger:hover {
+    color: #efaf7b;
+}
+
+
+.timeline-item .toggle-content {
+    display: none;
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-left: 15px;
+}
+
+
+.pdf-link {
+    font-size: 1em; 
+}
+.project-image {
+    width: 100%; 
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+
+/* ======== イラスト紹介 ======== */
+.illustration-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.artwork {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 15px;
+}
+.artwork-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.artwork-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.artwork-tools {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 10px;
+}
+.artwork-tools .fas, 
+.artwork-tools .fa-pen-nib {
+    margin-right: 5px;
+}
+.artwork-description {
+    font-size: 0.9em;
+    line-height: 1.6;
+}
