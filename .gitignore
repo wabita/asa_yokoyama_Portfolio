@@ -1,3 +1,5 @@
 .vercel
 img/
 fonts/
+files/
+.DS_Store
