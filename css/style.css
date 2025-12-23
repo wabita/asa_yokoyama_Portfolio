@@ -17,9 +17,12 @@
 body {
     font-family:'YDW','BokuFont', "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
     background-color:#fdf6e3;
-    color: #e41d1de0; 
+    color: #444; 
     line-height: 1.7; 
     padding: 20px;
+}
+a, h1, h2, h3, .toggle-trigger {
+    color: #db1e1e;
 }
 
 .container {
@@ -34,14 +37,14 @@ body {
     border-radius: 10px; /* 枠線の角を少し丸く */
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 5px 5px 0px rgba(0,0,0,0.1); /* 少し影をつける */
+    box-shadow: 5px 5px 0px #efaf7ba0;/* 少し影をつける */
 }
 
 .header {
     display: flex;
     justify-content: space-between; /* 要素を両端に配置 */
     align-items: center; /* 要素の縦位置を中央に */
-    border-bottom: 2px dashed #ccc; /* 点線の下線 */
+    border-bottom: 2px dashed rgba(207, 32, 32, 0.202); /* 点線の下線 */
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
@@ -90,7 +93,7 @@ body {
     border-radius: 20px;
     overflow: hidden;
     background-color: #fff;
-    box-shadow: 5px 5px 0px rgba(0,0,0,0.1); 
+    box-shadow: 5px 5px 0px #efaf7ba0; 
 }
 .profile-table {
     width: 100%;
@@ -114,11 +117,22 @@ body {
     border-right: 1px solid #db1e1e;
 }
 
+.email-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-skip-ink: none; /* ★これで線が切れなくなります */
+    text-underline-offset: 3px;     /* 線を少し下にずらす */
+    transition: color 0.2s;
+}
+.email-link:hover {
+    color: #db1e1e;
+}
+
 /* ===右側のコンテナ ===*/
 /* アイコン画像 */
 .illustration img {
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -140,6 +154,25 @@ body {
     vertical-align: middle; /
 }
 
+/* プロフィール表や本文内のリンク用スタイル */
+.profile-link {
+    font-weight: bold;
+    color: inherit;
+    transition: color 0.2s;
+    cursor: pointer;
+}
+
+/* マウスを乗せたときの色 */
+.profile-link:hover {
+    color: #efaf7b;             /* オレンジ色 */
+}
+
+.toggle-link{
+    text-decoration: underline;
+    text-decoration-skip-ink: none; /* 文字と被っても線を消さない */
+    text-underline-offset: 3px;   
+}
+
 
 /* ======== 縦型タイムラインのデザイン ======== */
 /* タイムライン全体を囲むコンテナ */
@@ -148,6 +181,7 @@ body {
     padding-left: 50px;
     margin-left: 10px;
     font-family:'SenobiGothic','YDW','BokuFont', "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    padding-bottom: 40px;
 }
 
 /* タイムラインの縦線 */
@@ -156,10 +190,27 @@ body {
     position: absolute;
     left: 20px; /* 基準となる線の位置 */
     top: 10px;
-    bottom: 10px;
+    bottom: 60px;
     width: 3px;
     background-color: #db1e1e;
 }
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    left: 20px;   /* 実線と同じ横位置 */
+    bottom: 10px; /* 一番下（余白10px残し）からスタート */
+    
+    width: 3px;   /* 線の太さ */
+    height: 50px; /* 点線の長さ（約2cm） */
+    
+    /* 点線を描く（等間隔） */
+    /* 赤い部分50%、透明部分50%の繰り返しで点線を表現 */
+    background-image: linear-gradient(to bottom, #db1e1e 50%, transparent 50%);
+    background-size: 3px 10px; /* 幅3px、1つの点の縦幅+隙間=10px */
+    background-repeat: repeat-y;
+}
+
+
 
 /* 各年代のブロック */
 .timeline-item {
@@ -200,19 +251,74 @@ body {
 }
 
 
+/* ======== トグル（開閉ボタン）のデザイン修正 ======== */
 .timeline-item .toggle-trigger {
+    /* ブロック要素にして幅を持たせる */
+    display: block; 
+    
+    /* 枠線と背景色で「独立した箱」に見せる */
+    background-color: #fff;       /* 基本は白背景 */
+    border: 2px solid #db1e1e;    /* テーマカラーの枠線 */
+    border-radius: 8px;           /* 角を丸くして柔らかく */
+    
+    /* 余白と文字設定 */
+    padding: 5px 15px;           /* 内側に余裕を持たせる */
+    margin-bottom: 10px;          /* 下との隙間 */
+    margin-left: 15px;
     cursor: pointer;
     user-select: none;
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: bold;
-    transition: color 0.2s;
-    padding-left: 15px; 
-    text-decoration: underline;  
-    color: inherit; 
+    color: #db1e1e;               /* 文字色 */
+    text-decoration: none;        /* 下線は消す */
+    transition: all 0.2s ease;
+    
+    /* アイコンを右端に配置するためのFlexbox */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
 }
+
+/* マウスを乗せたとき */
 .timeline-item .toggle-trigger:hover {
-    color: #efaf7b;
+    background-color: #ffe4cc;    /* 薄いオレンジ背景 */
+    transform: translateY(-2px);  /* 少し浮き上がる */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* 影をつける */
 }
+
+/* ======== 修正箇所 1：通常時（プラス） ======== */
+.timeline-item .toggle-trigger::after {
+    /* 文字の '+' ではなく、アイコンコードを使う */
+    content: '\f067';             /* FontAwesomeのプラスアイコン */
+    font-family: "Font Awesome 6 Free"; /* FontAwesomeを指定 */
+    font-weight: 900;             /* アイコンを表示するために必須 */
+    
+    font-size: 0.9em;             /* アイコンのサイズ（少し小さめが上品） */
+    margin-left: 10px;
+    color: #db1e1e;               /* 記号の色 */
+    transition: transform 0.3s;   /* 回転アニメーション用 */
+}
+
+/* ======== 修正箇所 2：クリックされた時（マイナス） ======== */
+.timeline-item .toggle-trigger.active::after {
+    /* マイナスアイコンに切り替え */
+    content: '\f068';             /* FontAwesomeのマイナスアイコン */
+    color: #fff;
+    /* もしくは、プラスを回転させて×にする演出も人気です */
+    /* content: '\f067'; */
+    /* transform: rotate(45
+    deg); */
+}
+
+
+/* 開いている状態（JSでクラスがつくと仮定）のデザイン */
+.timeline-item .toggle-trigger.active {
+    background-color: #db1e1e;
+    color: #fff;
+}
+
 
 
 .timeline-item .toggle-content {
@@ -225,8 +331,8 @@ body {
 }
 
 
-.pdf-link {
-    font-size: 1em; 
+.url-link {
+    font-size: 0.9em; 
 }
 .project-image {
     width: 100%; 
@@ -238,7 +344,7 @@ body {
 }
 
 
-/* ======== イラスト紹介 ======== */
+/* ======== イラスト紹介 ======== 
 .illustration-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -273,3 +379,138 @@ body {
     font-size: 0.9em;
     line-height: 1.6;
 }
+
+*/
+
+/* ======== リンクをボタン風にするスタイル ======== */
+
+/* 共通のボタンスタイル（プロフィールリンク、PDFリンク両方に適用） */
+.profile-link,
+.url-link,
+a[href^="http"] { /* httpで始まるリンクにも適用する場合 */
+    display: inline-block;       /* ボタンの形を作るために必須 */
+    padding: 5px 15px;           /* 内側の余白（上下、左右） */
+    margin: 5px 0;               /* 周りの余白 */
+    border: 2px solid #db1e1e;   /* サイトのテーマカラーの枠線 */
+    border-radius: 50px;         /* 丸みを帯びたカプセル型にする */
+    background-color: #fff;      /* 通常時は白背景 */
+    color: #db1e1e;              /* 文字は赤 */
+    font-weight: bold;
+    text-decoration: none;       /* 下線は消す */
+    transition: all 0.3s ease;   /* ふわっと変化させる */
+    box-shadow: 2px 2px 0px #efaf7b63; /* 薄い影をつけて立体感を出す */
+}
+
+/* マウスを乗せたとき（ホバー時） */
+.profile-link:hover,
+.url-link:hover,
+a[href^="http"]:hover {
+    background-color: #db1e1e;   /* 背景を赤にする */
+    color: #fff;                 /* 文字を白にする */
+    transform: translateY(-2px); /* 少し上に浮き上がる */
+    box-shadow: 4px 4px 0px #efaf7bc1; /* 影を濃くする */
+}
+
+
+@media screen and (max-width: 768px) {
+    
+    .top-section {
+        /* 縦並びにする＋順序を逆（下にあるものを上に）にする */
+        flex-direction: column-reverse;
+    }
+
+    /* ついでに、縦並びになった時は横幅いっぱいに広げると見やすいです */
+    .profile-table-card,
+    .right-column {
+        width: 100%;
+        flex: auto; /* 元の flex: 3 などの比率設定をリセット */
+    }
+}
+
+/* =========================================
+   背景のスクロール連動ライン演出
+========================================= */
+
+/* =========================================
+   背景のスクロール連動ライン演出（4方向対応版）
+========================================= */
+
+/* コンテナ */
+.bg-lines-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+    --scroll-ratio: 0;
+}
+
+/* 線の共通スタイル（全ての線に適用） */
+.bg-line {
+    position: absolute;
+    background-color: #db1e1e;
+    opacity: 0.7; 
+    transition: all 0.1s linear;
+}
+
+/* --- 1. 上から下へ伸びる線 (Top to Bottom) --- */
+.v-line {
+    top: 0;
+    width: 2px;
+    height: calc(0% + var(--scroll-ratio) * var(--target-h));
+}
+
+/* --- 2. 下から上へ伸びる線 (Bottom to Top) --- */
+.v-line2 {
+    bottom: 0; /* 下に固定 */
+    width: 2px;
+    height: calc(0% + var(--scroll-ratio) * var(--target-h));
+}
+
+/* --- 3. 右から左へ伸びる線 (Right to Left) --- */
+.h-line {
+    right: 0;
+    height: 2px;
+    width: calc(0% + var(--scroll-ratio) * var(--target-w));
+}
+
+/* --- 4. 左から右へ伸びる線 (Left to Right) --- */
+.h-line2 {
+    left: 0; /* 左に固定 */
+    height: 2px;
+    width: calc(0% + var(--scroll-ratio) * var(--target-w));
+}
+
+
+/* --- 各線の配置と目標サイズ --- */
+
+/* ▼ 右上エリアの縦線（v-line） */
+.v1 { right: 75px;  --target-h: 270px; transition-delay: 0s; }
+.v2 { right: 150px; --target-h: 360px; transition-delay: 0.05s; }
+.v3 { right: 225px; --target-h: 280px; transition-delay: 0.1s; }
+.v4 { right: 300px; --target-h: 340px; transition-delay: 0.15s; }
+
+
+/* ▼ 左下エリアの縦線（v-line2）※位置はleft指定に変更 */
+.v5 { left: 75px;  --target-h: 380px; transition-delay: 0.15s; }
+.v6 { left: 150px; --target-h: 340px; transition-delay: 0.2s; }
+.v7 { left: 225px; --target-h: 350px; transition-delay: 0.25s; }
+.v8 { left: 300px; --target-h: 330px; transition-delay: 0.3s; }
+.v9 { left: 375px; --target-h: 380px; transition-delay: 0.35s; }
+
+/* ▼ 右上エリアの横線（h-line） */
+.h1 { top: 75px;  --target-w: 400px; transition-delay: 0s; }
+.h2 { top: 150px; --target-w: 300px; transition-delay: 0.05s; }
+.h3 { top: 225px; --target-w: 450px; transition-delay: 0.1s; }
+.h4 { top: 300px; --target-w: 350px; transition-delay: 0.15s; }
+
+/* ▼ 左下エリアの横線（h-line2）※位置はbottom指定に変更 */
+.h5 { bottom: 75px;  --target-w: 340px; transition-delay: 0s; }
+.h6 { bottom: 150px; --target-w: 320px; transition-delay: 0.05s; }
+.h7 { bottom: 225px; --target-w: 355px; transition-delay: 0.1s; }
+.h8 { bottom: 300px; --target-w: 345px; transition-delay: 0.15s; }
+.h9 { bottom: 375px; --target-w: 333px; transition-delay: 0.2s; }
+.h10 { bottom: 450px; --target-w: 300px; transition-delay: 0.3s; }
