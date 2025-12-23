@@ -1,6 +1,4 @@
 .vercel
-img/
-fonts/
-files/
+img/illust/
 .DS_Store
 js/config.js
