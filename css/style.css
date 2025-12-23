@@ -1,16 +1,17 @@
 @font-face {
   font-family: 'BokuFont';
-  src: url('/Users/yokoyama/asa_yokoyama_Portfolio/fonts/Boku2-Bold.otf');
+  /* 修正: 絶対パスをやめて、相対パスに変更 */
+  src: url('../fonts/Boku2-Bold.otf');
 }
 
 @font-face {
   font-family: 'YDW'; 
-  src: url('/Users/yokoyama/asa_yokoyama_Portfolio/fonts/YDWbananaslipplus.otf'); 
+  src: url('../fonts/YDWbananaslipplus.otf'); 
 }
 
 @font-face {
   font-family: 'SenobiGothic'; 
-  src: url('/Users/yokoyama/asa_yokoyama_Portfolio/fonts/Senobi-Gothic-Regular.ttf') format('truetype'); 
+  src: url('../fonts/Senobi-Gothic-Regular.ttf') format('truetype'); 
 }
 
 /* ======== 全体のスタイル ======== */
@@ -80,9 +81,6 @@ a, h1, h2, h3, .toggle-trigger {
     
     /* 文字色は赤 */
     color: #db1e1e;
-    
-    /* 文字の少し下に影をつけて、立体感を出す（お好みで） */
-
 }
 
 
@@ -91,7 +89,6 @@ a, h1, h2, h3, .toggle-trigger {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
-    /* ★変更：min-heightを削除し、flexboxの自動高さ調整に任せる */
     align-items: center;
 }
 .profile-table-card { 
@@ -151,8 +148,8 @@ a, h1, h2, h3, .toggle-trigger {
 .email-link {
     color: inherit;
     text-decoration: underline;
-    text-decoration-skip-ink: none; /* ★これで線が切れなくなります */
-    text-underline-offset: 3px;     /* 線を少し下にずらす */
+    text-decoration-skip-ink: none; 
+    text-underline-offset: 3px;     
     transition: color 0.2s;
 }
 .email-link:hover {
@@ -179,13 +176,10 @@ a, h1, h2, h3, .toggle-trigger {
     margin-top: 0;
 }
 /* スキルリストのアイコン */
-/* スキルリストのアイコン設定 */
 .skills-list i {
-    font-size: 1.2em; /* 少し大きくすると可愛い */
+    font-size: 1.2em; 
     margin-right: 5px; 
     vertical-align: middle;
-    
-    /* ▼▼▼ 追加：テーマカラーの赤にする ▼▼▼ */
     color: #e58f67 !important;
 }
 
@@ -197,20 +191,18 @@ a, h1, h2, h3, .toggle-trigger {
     cursor: pointer;
 }
 
-/* マウスを乗せたときの色 */
 .profile-link:hover {
-    color: #efaf7b;             /* オレンジ色 */
+    color: #efaf7b;
 }
 
 .toggle-link{
     text-decoration: underline;
-    text-decoration-skip-ink: none; /* 文字と被っても線を消さない */
+    text-decoration-skip-ink: none; 
     text-underline-offset: 3px;   
 }
 
 
 /* ======== 縦型タイムラインのデザイン ======== */
-/* タイムライン全体を囲むコンテナ */
 .timeline-container {
     position: relative;
     padding-left: 50px;
@@ -219,11 +211,10 @@ a, h1, h2, h3, .toggle-trigger {
     padding-bottom: 40px;
 }
 
-/* タイムラインの縦線 */
 .timeline-container::before {
     content: '';
     position: absolute;
-    left: 20px; /* 基準となる線の位置 */
+    left: 20px; 
     top: 10px;
     bottom: 60px;
     width: 3px;
@@ -232,20 +223,14 @@ a, h1, h2, h3, .toggle-trigger {
 .timeline-container::after {
     content: '';
     position: absolute;
-    left: 20px;   /* 実線と同じ横位置 */
-    bottom: 10px; /* 一番下（余白10px残し）からスタート */
-    
-    width: 3px;   /* 線の太さ */
-    height: 50px; /* 点線の長さ（約2cm） */
-    
-    /* 点線を描く（等間隔） */
-    /* 赤い部分50%、透明部分50%の繰り返しで点線を表現 */
+    left: 20px;   
+    bottom: 10px; 
+    width: 3px;   
+    height: 50px; 
     background-image: linear-gradient(to bottom, #db1e1e 50%, transparent 50%);
-    background-size: 3px 10px; /* 幅3px、1つの点の縦幅+隙間=10px */
+    background-size: 3px 10px; 
     background-repeat: repeat-y;
 }
-
-
 
 /* 各年代のブロック */
 .timeline-item {
@@ -253,7 +238,6 @@ a, h1, h2, h3, .toggle-trigger {
     margin-bottom: 25px;
 }
 
-/* 年号のスタイル */
 .timeline-item::before {
     content: attr(data-year);
     position: absolute;
@@ -271,7 +255,6 @@ a, h1, h2, h3, .toggle-trigger {
     margin-bottom: 0;
 }
 
-
 .image-row {
     display: flex; 
     gap: 10px;     
@@ -285,30 +268,22 @@ a, h1, h2, h3, .toggle-trigger {
     max-width: none;
 }
 
-
 /* ======== トグル（開閉ボタン）のデザイン修正 ======== */
 .timeline-item .toggle-trigger {
-    /* ブロック要素にして幅を持たせる */
     display: block; 
-    
-    /* 枠線と背景色で「独立した箱」に見せる */
-    background-color: #fff;       /* 基本は白背景 */
-    border: 2px solid #db1e1e;    /* テーマカラーの枠線 */
-    border-radius: 8px;           /* 角を丸くして柔らかく */
-    
-    /* 余白と文字設定 */
-    padding: 5px 15px;           /* 内側に余裕を持たせる */
-    margin-bottom: 10px;          /* 下との隙間 */
+    background-color: #fff;       
+    border: 2px solid #db1e1e;    
+    border-radius: 8px;           
+    padding: 5px 15px;           
+    margin-bottom: 10px;          
     margin-left: 15px;
     cursor: pointer;
     user-select: none;
     font-size: 1.1em;
     font-weight: bold;
-    color: #db1e1e;               /* 文字色 */
-    text-decoration: none;        /* 下線は消す */
+    color: #db1e1e;               
+    text-decoration: none;        
     transition: all 0.2s ease;
-    
-    /* アイコンを右端に配置するためのFlexbox */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -316,45 +291,31 @@ a, h1, h2, h3, .toggle-trigger {
     z-index: 1;
 }
 
-/* マウスを乗せたとき */
 .timeline-item .toggle-trigger:hover {
-    background-color: #ffe4cc;    /* 薄いオレンジ背景 */
-    transform: translateY(-2px);  /* 少し浮き上がる */
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* 影をつける */
+    background-color: #ffe4cc;    
+    transform: translateY(-2px);  
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1); 
 }
 
-/* ======== 修正箇所 1：通常時（プラス） ======== */
 .timeline-item .toggle-trigger::after {
-    /* 文字の '+' ではなく、アイコンコードを使う */
-    content: '\f067';             /* FontAwesomeのプラスアイコン */
-    font-family: "Font Awesome 6 Free"; /* FontAwesomeを指定 */
-    font-weight: 900;             /* アイコンを表示するために必須 */
-    
-    font-size: 0.9em;             /* アイコンのサイズ（少し小さめが上品） */
+    content: '\f067';             
+    font-family: "Font Awesome 6 Free"; 
+    font-weight: 900;             
+    font-size: 0.9em;             
     margin-left: 10px;
-    color: #db1e1e;               /* 記号の色 */
-    transition: transform 0.3s;   /* 回転アニメーション用 */
+    color: #db1e1e;               
+    transition: transform 0.3s;   
 }
 
-/* ======== 修正箇所 2：クリックされた時（マイナス） ======== */
 .timeline-item .toggle-trigger.active::after {
-    /* マイナスアイコンに切り替え */
-    content: '\f068';             /* FontAwesomeのマイナスアイコン */
+    content: '\f068';             
     color: #fff;
-    /* もしくは、プラスを回転させて×にする演出も人気です */
-    /* content: '\f067'; */
-    /* transform: rotate(45
-    deg); */
 }
 
-
-/* 開いている状態（JSでクラスがつくと仮定）のデザイン */
 .timeline-item .toggle-trigger.active {
     background-color: #db1e1e;
     color: #fff;
 }
-
-
 
 .timeline-item .toggle-content {
     display: none;
@@ -364,7 +325,6 @@ a, h1, h2, h3, .toggle-trigger {
     border-radius: 5px;
     margin-left: 15px;
 }
-
 
 .url-link {
     font-size: 0.9em; 
@@ -378,98 +338,47 @@ a, h1, h2, h3, .toggle-trigger {
     border-radius: 5px;
 }
 
-
-/* ======== イラスト紹介 ======== 
-.illustration-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-.artwork {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    padding: 15px;
-}
-.artwork-image {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-.artwork-title {
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-.artwork-tools {
-    font-size: 0.9em;
-    color: #555;
-    margin-bottom: 10px;
-}
-.artwork-tools .fas, 
-.artwork-tools .fa-pen-nib {
-    margin-right: 5px;
-}
-.artwork-description {
-    font-size: 0.9em;
-    line-height: 1.6;
-}
-
-*/
-
 /* ======== リンクをボタン風にするスタイル ======== */
-
-/* 共通のボタンスタイル（プロフィールリンク、PDFリンク両方に適用） */
 .profile-link,
 .url-link,
-a[href^="http"] { /* httpで始まるリンクにも適用する場合 */
-    display: inline-block;       /* ボタンの形を作るために必須 */
-    padding: 5px 15px;           /* 内側の余白（上下、左右） */
-    margin: 5px 0;               /* 周りの余白 */
-    border: 2px solid #db1e1e;   /* サイトのテーマカラーの枠線 */
-    border-radius: 50px;         /* 丸みを帯びたカプセル型にする */
-    background-color: #fff;      /* 通常時は白背景 */
-    color: #db1e1e;              /* 文字は赤 */
+a[href^="http"] { 
+    display: inline-block;       
+    padding: 5px 15px;           
+    margin: 5px 0;               
+    border: 2px solid #db1e1e;   
+    border-radius: 50px;         
+    background-color: #fff;      
+    color: #db1e1e;              
     font-weight: bold;
-    text-decoration: none;       /* 下線は消す */
-    transition: all 0.3s ease;   /* ふわっと変化させる */
-    box-shadow: 2px 2px 0px #efaf7b63; /* 薄い影をつけて立体感を出す */
+    text-decoration: none;       
+    transition: all 0.3s ease;   
+    box-shadow: 2px 2px 0px #efaf7b63; 
 }
 
-/* マウスを乗せたとき（ホバー時） */
 .profile-link:hover,
 .url-link:hover,
 a[href^="http"]:hover {
-    background-color: #db1e1e;   /* 背景を赤にする */
-    color: #fff;                 /* 文字を白にする */
-    transform: translateY(-2px); /* 少し上に浮き上がる */
-    box-shadow: 4px 4px 0px #efaf7bc1; /* 影を濃くする */
+    background-color: #db1e1e;   
+    color: #fff;                 
+    transform: translateY(-2px); 
+    box-shadow: 4px 4px 0px #efaf7bc1; 
 }
 
 
 @media screen and (max-width: 768px) {
-    
     .top-section {
-        /* 縦並びにする＋順序を逆（下にあるものを上に）にする */
         flex-direction: column-reverse;
     }
-
-    /* ついでに、縦並びになった時は横幅いっぱいに広げると見やすいです */
     .profile-table-card,
     .right-column {
         width: 100%;
-        flex: auto; /* 元の flex: 3 などの比率設定をリセット */
+        flex: auto; 
     }
 }
 
 /* =========================================
-   背景：正方形グリッドアニメーション
-========================================= */
-
-/* =========================================
    背景：起動アニメーション（CSSのみ）
 ========================================= */
-
 .bg-lines-container {
     position: fixed;
     top: 0; left: 0;
@@ -478,91 +387,54 @@ a[href^="http"]:hover {
     pointer-events: none;
     overflow: hidden;
 }
-
-/* 線の共通スタイル */
 .bg-line {
     position: absolute;
     background-color: #db1e1e;
     opacity: 0.15;
-    /* transition は削除 */
 }
-
-/* アニメーションの定義 */
-/* 縦線が伸びる動き */
 @keyframes growV {
     0%   { height: 0; }
-    100% { height: 100vh; } /* 最終的に画面いっぱい */
+    100% { height: 100vh; } 
 }
-
-/* 横線が伸びる動き */
 @keyframes growH {
     0%   { width: 0; }
-    100% { width: 100vw; } /* 最終的に画面いっぱい */
+    100% { width: 100vw; } 
 }
-
-/* --- 縦線（共通） --- */
 .v-line {
     width: 2.5px;
-    height: 0; /* 最初は0 */
-    /* 2秒かけて伸びる（終わったらそのまま停止） */
+    height: 0; 
     animation: growV 2.0s ease-out forwards;
 }
-
-/* --- 横線（共通） --- */
 .h-line {
     height: 2.5px;
-    width: 0; /* 最初は0 */
-    /* 2秒かけて伸びる */
+    width: 0; 
     animation: growH 2.0s ease-out forwards;
 }
-
-/* --- 4方向の起点（変更なし） --- */
 .from-top    { top: 0; }
 .from-bottom { bottom: 0; }
 .from-left   { left: 0; }
 .from-right  { right: 0; }
 
-/* --- 配置設定（px固定はそのまま） --- */
-/* delay（遅延）を使って、ランダムに線が走るようにする */
-
-/* 1本目 */
 .v-line.L-1 { left: 120px; animation-delay: 0s; }
-.h-line.L-1 { top:  120px; animation-delay: 0.5s; } /* 少し遅れて出る */
-
-/* 2本目 */
+.h-line.L-1 { top:  120px; animation-delay: 0.5s; }
 .v-line.L-2 { left: 240px; animation-delay: 0.2s; }
 .h-line.L-2 { top:  240px; animation-delay: 0.1s; }
-
-/* 3本目 */
 .v-line.L-3 { left: 360px; animation-delay: 0.4s; }
 .h-line.L-3 { top:  360px; animation-delay: 0.3s; }
-
-/* 4本目 */
 .v-line.L-4 { left: 480px; animation-delay: 0.1s; }
 .h-line.L-4 { top:  480px; animation-delay: 0.6s; }
-
-/* 5本目 */
 .v-line.L-5 { left: 600px; animation-delay: 0.5s; }
 .h-line.L-5 { top:  600px; animation-delay: 0.2s; }
-
-/* 6本目 */
 .v-line.L-6 { left: 720px; animation-delay: 0.3s; }
 .h-line.L-6 { top:  720px; animation-delay: 0.4s; }
-
-/* 7本目以降も同様に... */
 .v-line.L-7 { left: 840px; animation-delay: 0.2s; }
 .h-line.L-7 { top:  840px; animation-delay: 0.1s; }
-
 .v-line.L-8 { left: 960px; animation-delay: 0.6s; }
 .h-line.L-8 { top:  960px; animation-delay: 0.3s; }
-
 .v-line.L-9 { left: 1080px; animation-delay: 0.1s; }
 .h-line.L-9 { top:  1080px; animation-delay: 0.5s; }
-
 .v-line.L-10 { left: 1200px; animation-delay: 0.4s; }
 .h-line.L-10 { top:  1200px; animation-delay: 0.2s; }
-
-/* 画面外用 */
 .v-line.L-11 { left: 1320px; animation-delay: 0.3s; }
 .v-line.L-12 { left: 1440px; animation-delay: 0.5s; }
 .v-line.L-13 { left: 1560px; animation-delay: 0.2s; }
