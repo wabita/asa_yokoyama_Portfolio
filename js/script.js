@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================
     // 2. メールアドレスの表示設定
     // =========================================
+    const myEmail = "EMAIL_PLACEHOLDER";
     const emailContainer = document.getElementById('email-container');
     if (emailContainer && typeof MY_EMAIL !== 'undefined') {
         emailContainer.innerHTML = `
