@@ -37,21 +37,52 @@ a, h1, h2, h3, .toggle-trigger {
     border-radius: 10px; /* 枠線の角を少し丸く */
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 5px 5px 0px #efaf7ba0;/* 少し影をつける */
+    box-shadow: 5px 5px 0px #f0caa6; /* 少し影をつける */
 }
 
+/* ヘッダー全体を「白い看板」のようなデザインにする */
 .header {
+    /* 箱の配置：画面の中央に置く */
     display: flex;
-    justify-content: space-between; /* 要素を両端に配置 */
-    align-items: center; /* 要素の縦位置を中央に */
-    border-bottom: 2px dashed rgba(207, 32, 32, 0.202); /* 点線の下線 */
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    justify-content: center; /* 中の文字を左右中央揃え */
+    align-items: center;     /* 上下中央揃え */
+    margin: 0 auto 30px auto; /* 上は0、左右は自動(中央寄せ)、下は30px空ける */
+    
+    /* 箱の見た目：他のカードと統一感を出す */
+    background-color: #fff;      /* 背景を白くしてグリッドを隠す */
+    border: 2px solid #db1e1e;   /* テーマカラーの枠線 */
+    border-radius: 50px;         /* 丸みを帯びたカプセル型にする */
+    
+    /* 箱のサイズ */
+    width: fit-content;          /* 文字の長さに合わせて箱の大きさを決める */
+    min-width: 300px;            /* 文字が短くても、ある程度の幅（300px）は確保する */
+    padding: 10px 40px;          /* 文字の周りに余裕を持たせる */
+    
+    /* 浮き上がらせる */
+    box-shadow: 5px 5px 0px #f0caa6; /* オレンジ色の影でポップに */
+    
+    /* 背景グリッドより手前に表示 */
+    position: relative;
+    z-index: 10;
 }
+
+/* 中の文字（About Me） */
 .header h1 {
-    font-family: 'YDW','SenobiGothic','BokuFont','Comic Sans MS', cursive, sans-serif; /* 手書き風フォント */
+    /* フォント設定（変更なし） */
+    font-family: 'YDW','SenobiGothic','BokuFont','Comic Sans MS', cursive, sans-serif;
     font-size: 2.5em;
     margin: 0;
+    
+    /* 前回の設定（線など）は全てリセット */
+    border: none;
+    background: none;
+    padding: 0;
+    
+    /* 文字色は赤 */
+    color: #db1e1e;
+    
+    /* 文字の少し下に影をつけて、立体感を出す（お好みで） */
+
 }
 
 
@@ -148,10 +179,14 @@ a, h1, h2, h3, .toggle-trigger {
     margin-top: 0;
 }
 /* スキルリストのアイコン */
+/* スキルリストのアイコン設定 */
 .skills-list i {
-    font-size: 11px; 
-    margin-right: 1px; 
-    vertical-align: middle; /
+    font-size: 1.2em; /* 少し大きくすると可愛い */
+    margin-right: 5px; 
+    vertical-align: middle;
+    
+    /* ▼▼▼ 追加：テーマカラーの赤にする ▼▼▼ */
+    color: #e58f67 !important;
 }
 
 /* プロフィール表や本文内のリンク用スタイル */
@@ -428,89 +463,109 @@ a[href^="http"]:hover {
 }
 
 /* =========================================
-   背景のスクロール連動ライン演出
+   背景：正方形グリッドアニメーション
 ========================================= */
 
 /* =========================================
-   背景のスクロール連動ライン演出（4方向対応版）
+   背景：起動アニメーション（CSSのみ）
 ========================================= */
 
-/* コンテナ */
 .bg-lines-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     z-index: -1;
     pointer-events: none;
     overflow: hidden;
-    --scroll-ratio: 0;
 }
 
-/* 線の共通スタイル（全ての線に適用） */
+/* 線の共通スタイル */
 .bg-line {
     position: absolute;
     background-color: #db1e1e;
-    opacity: 0.7; 
-    transition: all 0.1s linear;
+    opacity: 0.15;
+    /* transition は削除 */
 }
 
-/* --- 1. 上から下へ伸びる線 (Top to Bottom) --- */
+/* アニメーションの定義 */
+/* 縦線が伸びる動き */
+@keyframes growV {
+    0%   { height: 0; }
+    100% { height: 100vh; } /* 最終的に画面いっぱい */
+}
+
+/* 横線が伸びる動き */
+@keyframes growH {
+    0%   { width: 0; }
+    100% { width: 100vw; } /* 最終的に画面いっぱい */
+}
+
+/* --- 縦線（共通） --- */
 .v-line {
-    top: 0;
-    width: 2px;
-    height: calc(0% + var(--scroll-ratio) * var(--target-h));
+    width: 2.5px;
+    height: 0; /* 最初は0 */
+    /* 2秒かけて伸びる（終わったらそのまま停止） */
+    animation: growV 2.0s ease-out forwards;
 }
 
-/* --- 2. 下から上へ伸びる線 (Bottom to Top) --- */
-.v-line2 {
-    bottom: 0; /* 下に固定 */
-    width: 2px;
-    height: calc(0% + var(--scroll-ratio) * var(--target-h));
-}
-
-/* --- 3. 右から左へ伸びる線 (Right to Left) --- */
+/* --- 横線（共通） --- */
 .h-line {
-    right: 0;
-    height: 2px;
-    width: calc(0% + var(--scroll-ratio) * var(--target-w));
+    height: 2.5px;
+    width: 0; /* 最初は0 */
+    /* 2秒かけて伸びる */
+    animation: growH 2.0s ease-out forwards;
 }
 
-/* --- 4. 左から右へ伸びる線 (Left to Right) --- */
-.h-line2 {
-    left: 0; /* 左に固定 */
-    height: 2px;
-    width: calc(0% + var(--scroll-ratio) * var(--target-w));
-}
+/* --- 4方向の起点（変更なし） --- */
+.from-top    { top: 0; }
+.from-bottom { bottom: 0; }
+.from-left   { left: 0; }
+.from-right  { right: 0; }
 
+/* --- 配置設定（px固定はそのまま） --- */
+/* delay（遅延）を使って、ランダムに線が走るようにする */
 
-/* --- 各線の配置と目標サイズ --- */
+/* 1本目 */
+.v-line.L-1 { left: 120px; animation-delay: 0s; }
+.h-line.L-1 { top:  120px; animation-delay: 0.5s; } /* 少し遅れて出る */
 
-/* ▼ 右上エリアの縦線（v-line） */
-.v1 { right: 75px;  --target-h: 270px; transition-delay: 0s; }
-.v2 { right: 150px; --target-h: 360px; transition-delay: 0.05s; }
-.v3 { right: 225px; --target-h: 280px; transition-delay: 0.1s; }
-.v4 { right: 300px; --target-h: 340px; transition-delay: 0.15s; }
+/* 2本目 */
+.v-line.L-2 { left: 240px; animation-delay: 0.2s; }
+.h-line.L-2 { top:  240px; animation-delay: 0.1s; }
 
+/* 3本目 */
+.v-line.L-3 { left: 360px; animation-delay: 0.4s; }
+.h-line.L-3 { top:  360px; animation-delay: 0.3s; }
 
-/* ▼ 左下エリアの縦線（v-line2）※位置はleft指定に変更 */
-.v5 { left: 75px;  --target-h: 380px; transition-delay: 0.15s; }
-.v6 { left: 150px; --target-h: 340px; transition-delay: 0.2s; }
-.v7 { left: 225px; --target-h: 350px; transition-delay: 0.25s; }
-.v8 { left: 300px; --target-h: 330px; transition-delay: 0.3s; }
-.v9 { left: 375px; --target-h: 380px; transition-delay: 0.35s; }
+/* 4本目 */
+.v-line.L-4 { left: 480px; animation-delay: 0.1s; }
+.h-line.L-4 { top:  480px; animation-delay: 0.6s; }
 
-/* ▼ 右上エリアの横線（h-line） */
-.h1 { top: 75px;  --target-w: 400px; transition-delay: 0s; }
-.h2 { top: 150px; --target-w: 300px; transition-delay: 0.05s; }
-.h3 { top: 225px; --target-w: 450px; transition-delay: 0.1s; }
-.h4 { top: 300px; --target-w: 350px; transition-delay: 0.15s; }
+/* 5本目 */
+.v-line.L-5 { left: 600px; animation-delay: 0.5s; }
+.h-line.L-5 { top:  600px; animation-delay: 0.2s; }
 
-/* ▼ 左下エリアの横線（h-line2）※位置はbottom指定に変更 */
-.h5 { bottom: 75px;  --target-w: 340px; transition-delay: 0s; }
-.h6 { bottom: 150px; --target-w: 320px; transition-delay: 0.05s; }
-.h7 { bottom: 225px; --target-w: 355px; transition-delay: 0.1s; }
-.h8 { bottom: 300px; --target-w: 345px; transition-delay: 0.15s; }
-.h9 { bottom: 375px; --target-w: 333px; transition-delay: 0.2s; }
-.h10 { bottom: 450px; --target-w: 300px; transition-delay: 0.3s; }
+/* 6本目 */
+.v-line.L-6 { left: 720px; animation-delay: 0.3s; }
+.h-line.L-6 { top:  720px; animation-delay: 0.4s; }
+
+/* 7本目以降も同様に... */
+.v-line.L-7 { left: 840px; animation-delay: 0.2s; }
+.h-line.L-7 { top:  840px; animation-delay: 0.1s; }
+
+.v-line.L-8 { left: 960px; animation-delay: 0.6s; }
+.h-line.L-8 { top:  960px; animation-delay: 0.3s; }
+
+.v-line.L-9 { left: 1080px; animation-delay: 0.1s; }
+.h-line.L-9 { top:  1080px; animation-delay: 0.5s; }
+
+.v-line.L-10 { left: 1200px; animation-delay: 0.4s; }
+.h-line.L-10 { top:  1200px; animation-delay: 0.2s; }
+
+/* 画面外用 */
+.v-line.L-11 { left: 1320px; animation-delay: 0.3s; }
+.v-line.L-12 { left: 1440px; animation-delay: 0.5s; }
+.v-line.L-13 { left: 1560px; animation-delay: 0.2s; }
+.v-line.L-14 { left: 1680px; animation-delay: 0.4s; }
+.v-line.L-15 { left: 1800px; animation-delay: 0.1s; }
+.v-line.L-16 { left: 1920px; animation-delay: 0.6s; }
