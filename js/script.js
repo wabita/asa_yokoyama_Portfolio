@@ -23,17 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================
     // 2. メールアドレスの表示設定（修正済み）
     // =========================================
-    const user = "yokoyama.asa0624"; 
-    const domain = "gmail.com"; 
-    const myEmail = user + "@" + domain;
     
     const emailContainer = document.getElementById('email-container');
     
-    // 修正：以前の 'typeof MY_EMAIL' のチェックを外し、myEmailを使うように変更
-    if (emailContainer) {
+    if (emailContainer && typeof MY_EMAIL !== 'undefined') {
         emailContainer.innerHTML = `
-            <a href="mailto:${myEmail}" class="email-link">
-                ${myEmail}
+            <a href="mailto:${MY_EMAIL}" class="email-link">
+                ${MY_EMAIL}
             </a>
         `;
     }
