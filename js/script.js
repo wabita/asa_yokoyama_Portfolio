@@ -9,57 +9,39 @@ document.addEventListener('DOMContentLoaded', () => {
             trigger.classList.toggle('active');
             const content = trigger.nextElementSibling;
             
-            // トグルの開閉処理
+            // シンプルな開閉処理
             if (content.style.display === 'block') {
                 content.style.display = 'none';
             } else {
                 content.style.display = 'block';
             }
-
-            // ★ここが修正ポイント！
-            // トグルが開閉されて「ページの長さ」が変わったので、
-            // 0.1秒後にスクロール率（線の長さ）を再計算させる
-            setTimeout(handleScroll, 100); 
+            
+            // ※以前あった setTimeout(handleScroll...) はもう不要なので削除しました
         });
     });
 
     // =========================================
-    // 2. メールアドレスの表示設定
+    // 2. メールアドレスの表示設定（修正済み）
     // =========================================
-   // GitHub Actionsを使わない簡易的な隠し方
-    const user = "yokoyama.asa0624"; // アットマークより前"; 
-    const domain = "gmail.com"; // アットマークより後ろ
+    const user = "yokoyama.asa0624"; 
+    const domain = "gmail.com"; 
     const myEmail = user + "@" + domain;
+    
     const emailContainer = document.getElementById('email-container');
-    if (emailContainer && typeof MY_EMAIL !== 'undefined') {
+    
+    // 修正：以前の 'typeof MY_EMAIL' のチェックを外し、myEmailを使うように変更
+    if (emailContainer) {
         emailContainer.innerHTML = `
-            <a href="mailto:${MY_EMAIL}" class="email-link">
-                ${MY_EMAIL}
+            <a href="mailto:${myEmail}" class="email-link">
+                ${myEmail}
             </a>
         `;
     }
 
     // =========================================
-    // 3. 背景ラインのスクロール連動処理
+    // 3. 背景ライン処理
     // =========================================
-    const linesContainer = document.querySelector('.bg-lines-container');
-
-    const handleScroll = () => {
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        
-        // ページの全体の高さ - 画面の高さ = スクロールできる長さ
-        // トグルが開くとここ（scrollHeight）が大きくなるので、
-        // 結果的に scrollRatio が小さくなり、線が適切な長さに戻ります
-        const scrollRange = document.documentElement.scrollHeight - window.innerHeight;
-        
-        let scrollRatio = scrollRange > 0 ? scrollTop / scrollRange : 0;
-        scrollRatio = Math.min(Math.max(scrollRatio, 0), 1);
-
-        linesContainer.style.setProperty('--scroll-ratio', scrollRatio);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    // 初期化時にも実行
-    handleScroll();
+    // CSSアニメーションに切り替えたため、
+    // ここにあった handleScroll などの処理は全て削除しました。
+    // これでコードがスッキリし、動作も軽くなります。
 });
