@@ -1,16 +1,16 @@
 @font-face {
   font-family: 'BokuFont';
-  src: url('../fonts/Boku2-Bold.otf');
+  src: url('/Users/yokoyama/asa_yokoyama_Portfolio/fonts/Boku2-Bold.otf');
 }
 
 @font-face {
   font-family: 'YDW'; 
-  src: url('../fonts/YDWbananaslipplus.otf'); 
+  src: url('/Users/yokoyama/asa_yokoyama_Portfolio/fonts/YDWbananaslipplus.otf'); 
 }
 
 @font-face {
   font-family: 'SenobiGothic'; 
-  src: url('../fonts/Senobi-Gothic-Regular.ttf') format('truetype'); 
+  src: url('/Users/yokoyama/asa_yokoyama_Portfolio/fonts/Senobi-Gothic-Regular.ttf') format('truetype'); 
 }
 
 /* ======== 全体のスタイル ======== */
