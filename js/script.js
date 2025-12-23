@@ -26,7 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================
     // 2. メールアドレスの表示設定
     // =========================================
-    const myEmail = "EMAIL_PLACEHOLDER";
+   // GitHub Actionsを使わない簡易的な隠し方
+    const user = "yokoyama.asa0624"; // アットマークより前"; 
+    const domain = "gmail.com"; // アットマークより後ろ
+    const myEmail = user + "@" + domain;
     const emailContainer = document.getElementById('email-container');
     if (emailContainer && typeof MY_EMAIL !== 'undefined') {
         emailContainer.innerHTML = `
