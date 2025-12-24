@@ -205,7 +205,7 @@
                                 <a href="./files/修了証.pdf" class="url-link" target="_blank" rel="noopener noreferrer">
                                     <i class="fas fa-file-pdf"></i>&nbsp;修了書はこちら
                                 </a>    
-                                <p>データサイエンスの基礎から機械学習の実装までを網羅的に学習。<br>
+                                <p>データサイエンスの基礎から機械学習の実装までをpythonで網羅的に学習。<br>
                                     他大学の学生や社会人も参加するハイレベルな環境に身を置くことで、視野を広げると共に、研究に直結する分析スキルを習得しました。<br>
                                     学んだ内容は研究内の分析で活かすことができ、成長を実感しています。</p>
                             </div>
@@ -216,15 +216,15 @@
                                     <i class="fas fa-file-pdf"></i>&nbsp;修了書はこちら
                                 </a>    
                                 <p>研究室で得た知識をビジネスの現場でどう活かすかを学ぶため、1ヶ月間の実践型インターンに参加。<br>
-                                    参加者100名以上のうち、上位十数名の「代表発表者」に選出され、グループワーク内での発表準備で専門外のメンバーへ技術をわかりやすく伝える「翻訳力」を磨きました。</p>
-                                <p>この経験を通じ、自分の技術力とコミュニケーション能力が学外でも通用するという確かな自信を得ることができました。</p>
+                                      参加者100名以上のうち、上位十数名の「代表発表者」に選出され、グループワーク内での発表準備で専門外のメンバーへ技術をわかりやすく伝える「翻訳力」を磨きました。</p>
+                                 <p>この経験を通じ、自分の技術力とコミュニケーション能力が学外でも通用するという確かな自信を得ることができました。</p>   
                             </div>
 
                             <h4 class="toggle-trigger"> 制作物について</h4>
                             <div class="toggle-content">
                                 
                                 <div style="margin-bottom: 40px;"> <h3>〜Memo Board（React個人開発）〜</h3>
-                                    <p>⚫︎使用技術: React, TypeScript</p> 
+                                    <p>⚫︎使用技術: React, TypeScript, dnd-kit, HTML, CSS</p> 
                                     
                                     <a href="https://github.com/wabita/note-app" class="url-link" target="_blank" rel="noopener noreferrer"><i class="devicon-github-original"></i>&nbsp;GitHub</a>&ensp;
                                     <a href="https://note-app-brown-six.vercel.app/" class="url-link" target="_blank" rel="noopener noreferrer">実際のアプリ</a> 
@@ -234,9 +234,10 @@
                                         
                                         <div class="content-text">
                                             <p><strong>【課題と解決】</strong><br>
-                                            「付箋でデスクが散らかる」という自身の課題を解決するために開発。思考を止めない操作性を追求し、React DnDライブラリを用いたスムーズなドラッグ＆ドロップを実装しました。</p>
-                                            <p><strong>【技術的アプローチ】</strong><br>
-                                            保守性を高めるためにTypeScriptを採用。また、再利用性を意識したコンポーネント設計や、ローカルストレージを用いたデータの永続化など、実運用を想定した設計を行いました。</p>
+                                                「直感的なアイデア整理」を目的として開発。操作性を追求し、軽量でモダンなライブラリ<strong>dnd-kit</strong>を採用してスムーズなドラッグ＆ドロップを実現しました。また、付箋が追加ボタンや画面外と重ならないよう、<strong>独自の衝突判定ロジック（Collision Detection）</strong>を組み込み、ストレスのないUXを提供しています。</p>
+                                                
+                                                <p><strong>【技術的アプローチ】</strong><br>
+                                                保守性を高めるために<strong>TypeScript</strong>を採用し、型定義（StickyNoteType）による堅牢な設計を行いました。機能面では<code>useEffect</code>を用いたウィンドウリサイズ監視による座標の自動補正機能や、ロジックとUIを分離したコンポーネント設計（Container/Presentationalパターン）を取り入れ、拡張性と可読性を意識した実装を行っています。</p>
                                         </div>
                                     </div>  
                                 </div>
@@ -264,7 +265,7 @@
                                     <img src="./img/combined_images.jpg" class="project-image">
 
                                 </div>
-                                <br
+                                <br>
                                 <div style="margin-bottom: 20px;">
                                     <h3>〜ポートフォリオサイト（個人開発）〜</h3>
                                     <p>⚫︎使用技術: HTML, CSS, JavaScript</p>    
