@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yokoyama Asa - Portfolio</title>
+    
+    <meta name="description" content="北海道大学 工学部 横山明咲のポートフォリオサイトです。エンジニアリングとデザインの融合を目指しています。">
+    <meta property="og:description" content="北海道大学 工学部 横山明咲のポートフォリオサイトです。エンジニアリングとデザインの融合を目指しています。" />
     <meta property="og:url" content="https://wabita.github.io/wabita/" />
     <meta property="og:image" content="https://wabita.github.io/wabita/img/icon.PNG" />
     <meta name="robots" content="noindex, nofollow">
@@ -58,8 +61,8 @@
                     <table class="profile-table">
                         <tbody>
                             <tr class="profile-row"><th>名前</th><td>横山 明咲　(よこやま あさ)</td></tr>
-                            <tr class="profile-row"><th>生年月日</th><td>2003年 6月 24日</td></tr>
                             <tr class="profile-row"><th>大学</th><td>北海道大学 工学部 <br>情報エレクトロニクス学科 メディアネットワークコース 4年</td></tr>
+                            <tr class="profile-row"><th>卒業予定</th><td>2028年 3月</td></tr>
                             <tr class="profile-row"><th>所属研究室</th><td>言語メディア学研究室</td></tr>
                             <tr class="profile-row"><th>研究テーマ</th><td>言語モデルにおける日本語ストーリー内の文順序付け能力に関する評価
                                 <div class="theme-en">
@@ -67,7 +70,7 @@
                                 </div>
 
                             </td></tr>
-                            <tr class="profile-row"><th>卒業予定</th><td>2028年 3月</td></tr>
+                            
                             <tr class="profile-row"><th>連絡先</th>
                                 <td id="email-container"></td>
                             </tr>
@@ -75,10 +78,10 @@
                                 <th>Links</th>
                                 <td>
                                     <a href="https://github.com/wabita" class="profile-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-                                    &ensp;|&ensp;
-                                    <a href="https://atcoder.jp/users/wabita" class="profile-link" target="_blank" rel="noopener noreferrer">AtCoder</a>
                                 </td>
                             </tr> 
+                            <tr class="profile-row"><th>生年月日</th><td>2003年 6月 24日</td></tr>
+                            <tr class="profile-row"><th>好きなもの</th><td>イラスト制作・お笑い鑑賞・旅行</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -100,8 +103,11 @@
                         <li><i class="devicon-javascript-plain colored"></i> JavaScript (約1年)</li>
                         <li><i class="devicon-react-original colored"></i> React (約1年)</li>
                         <li><i class="devicon-typescript-plain colored"></i> TypeScript (約1年)</li>
+                        <li class="csp-skill">
+                            <i class="fas fa-pen-nib colored" ></i> CLIP STUDIO PAINT (3年)
+                        </li>
                     </ul>
-                </div>
+                    </div>
             </div>
         </div>
 
@@ -115,12 +121,13 @@
                     <div class="timeline-item" data-year="2003"> 
                         <h3 class="toggle-trigger toggle-link"> 北海道 北見市 生まれ</h3>
                         <div class="toggle-content">
-                            <div class="content-row right-img">
-                                <img src="./img/1.jpg" alt="画像" class="content-img">
+                            <div class="content-row ">
+                                
                                 <div class="content-text">
                                     <p>物心ついた頃から絵を描くことが大好きで、現在に至るまで創作活動を続けています。<br>
                                     「自分の手で何かを生み出し、誰かに届ける」という原点はここにあります。</p>
                                 </div>
+                                <img src="./img/1.jpg" alt="画像" class="content-img">
                             </div>
                         </div>
                     </div>
@@ -152,8 +159,8 @@
                                 
                                 <h3>〜高専祭で展示した電子楽器〜</h3>
                                 <p>⚫︎使用技術:Arduino</p>   
-                                <div class="content-row right-img">
-                                    <img src="./img/IMG_0490.jpg" alt="画像" class="content-img">
+                                <div class="content-row">
+                                    
                                     <div class="content-text">
                                         <p>「見るだけの展示」から「触れて楽しむ展示」への変革を目指し、子供でも直感的に演奏できる電子楽器を開発しました。</p>
                                         <ul style="list-style: disc;  margin-bottom: 10px;">
@@ -161,6 +168,7 @@
                                             <li><strong>チームでの役割:</strong> プログラミングリーダーとして開発を主導。GitHubを用いた進捗管理や、ハード班とのインターフェース調整を行い、工期内での完成に貢献しました。</li>
                                         </ul>
                                     </div>
+                                    <img src="./img/IMG_0490.jpg" alt="画像" class="content-img">
                                 </div>   
                             </div>
                         </div>
@@ -174,9 +182,12 @@
                             <div class="toggle-content">
                                 <h3>〜3Dプリンターによるオリジナルプロダクト〜</h3>
                                 <p>⚫︎使用技術:Clip Studio Paint, Autodesk Fusion</p>      
-                                <p>デジタルなスキル（イラスト・設計）を物理的なモノとして出力するプロセスを実践。<br>
-                                    元々好きであったイラスト制作を活かし、実際に手に取れる形で表現する楽しさを再発見しました。<br>
-                                    2DイラストのSVGデータを3Dモデルに変換・立体化するワークフローを確立し、アイデアを即座に形にするプロトタイピング能力を高めました。</p>       
+                                <p><strong>【制作の背景】</strong><br>
+                                自身が得意とするイラスト制作の技術を、製品設計（CAD）の領域に応用し、バーチャルなデータを現実に手に取れる形として出力しました。</p>
+                                
+                                <p><strong>【プロセスと成果】</strong><br>
+                                2DイラストのSVGパスデータを3Dモデルに変換・立体化。<br>
+                                これにより、頭の中のイメージを即座に試作・検証する「アイデアの具現化力」を高めることができました。</p>    
                                 <div class="image-row">
                                     <img src="./img/3d1.jpg" class="project-image">
                                     <img src="./img/3d2.jpg" class="project-image">
@@ -199,7 +210,8 @@
                     <div class="timeline-item" data-year="2025">
                         <h3 class="toggle-trigger"> 研究の本格化と学外活動へのチャレンジ</h3>
                         <div class="toggle-content">
-                            
+                            <p></p>C言語やpythonだけでなく、Web開発やデータ分析など多様なスキルを身につけるため、積極的に学外イベントに参加し、多言語でのプログラミングを本格的に学ぶようになりました。</p>
+                            より論理的な考え方を養うため、競技プログラミングにも挑戦しています。
                             <h4 class="toggle-trigger"> 東京大学松尾研 GCI 修了</h4>
                             <div class="toggle-content">
                                 <a href="./files/修了証.pdf" class="url-link" target="_blank" rel="noopener noreferrer">
@@ -229,16 +241,16 @@
                                     <a href="https://github.com/wabita/note-app" class="url-link" target="_blank" rel="noopener noreferrer"><i class="devicon-github-original"></i>&nbsp;GitHub</a>&ensp;
                                     <a href="https://note-app-brown-six.vercel.app/" class="url-link" target="_blank" rel="noopener noreferrer">実際のアプリ</a> 
 
-                                    <div class="content-row right-img">
-                                        <img src="./img/memo.png" alt="Memo App Image" class="content-img">
+                                    <div class="content-row">
                                         
                                         <div class="content-text">
-                                            <p><strong>【課題と解決】</strong><br>
-                                                「直感的なアイデア整理」を目的として開発。操作性を追求し、軽量でモダンなライブラリ<strong>dnd-kit</strong>を採用してスムーズなドラッグ＆ドロップを実現しました。また、付箋が追加ボタンや画面外と重ならないよう、<strong>独自の衝突判定ロジック（Collision Detection）</strong>を組み込み、ストレスのないUXを提供しています。</p>
-                                                
-                                                <p><strong>【技術的アプローチ】</strong><br>
-                                                保守性を高めるために<strong>TypeScript</strong>を採用し、型定義（StickyNoteType）による堅牢な設計を行いました。機能面では<code>useEffect</code>を用いたウィンドウリサイズ監視による座標の自動補正機能や、ロジックとUIを分離したコンポーネント設計（Container/Presentationalパターン）を取り入れ、拡張性と可読性を意識した実装を行っています。</p>
+                                            <p><strong>【UXへのこだわり】</strong><br>
+                                            「思考を止めないアイデア整理」を実現するため、軽量なライブラリ「dnd-kit」を採用し、ストレスのないドラッグ＆ドロップを実装。また、付箋が重ならないよう独自の衝突判定ロジックを組み込み、快適な操作性を提供しています。</p>
+                                            
+                                            <p><strong>【技術的アプローチ】</strong><br>
+                                            保守性を重視してTypeScriptを採用し、型定義による堅牢な設計を行いました。また、ロジックとUIを分離することで、コードの可読性と拡張性を担保しています。</p>
                                         </div>
+                                        <img src="./img/memo.png" alt="Memo App Image" class="content-img">
                                     </div>  
                                 </div>
                                 <br>
@@ -248,41 +260,42 @@
                                     <p>⚫︎担当: 企画・発案 / フロントエンド / UIデザイン</p>
                                     <a href="https://github.com/Reshie/gradation-photos" class="url-link" target="_blank" rel="noopener noreferrer"><i class="devicon-github-original"></i>&nbsp;GitHubリポジトリはこちら</a>
                                     
-                                    <div class="content-row right-img">
-                                        <img src="./img/photo.png" alt="Portfolio Image" class="content-img">
-                                        
+                                    <div class="content-row">
+                                                                              
                                         <div class="content-text">
                                             <p><strong>【概要】</strong> 複数の画像を解析し、色相順のグラデーション状に並べて1枚のコラージュ画像を生成するアプリ。</p>
 
                                             <p><strong>【こだわりポイント】</strong><br>
                                             「思い出の写真やイラストをグラデーションで並べ、思い出を一枚の綺麗な画像にしたい！」という私の着想から開発がスタートしました。<br>
-                                            フロントエンドでは、シンプルな機能の中にも「ワクワク感」を持たせることを重視。<strong>動的なグラデーション背景の実装</strong>や<strong>ロゴデザイン</strong>を行い、視覚的な楽しさを演出しました。<br>
+                                            フロントエンドでは、動的なグラデーション背景やロゴデザインを実装し、視覚的な「ワクワク感」を演出しました。</p>
                                             また、開発環境（Docker）の整備やGitフローの構築を学び、チーム開発の基盤作りについて理解することができました。</p>
-
-                                            <p>　生成例）</p>
+                                            
                                         </div>
-                                    </div>
-                                    <img src="./img/combined_images.jpg" class="project-image">
-
-                                </div>
-                                <br>
-                                <div style="margin-bottom: 20px;">
-                                    <h3>〜ポートフォリオサイト（個人開発）〜</h3>
-                                    <p>⚫︎使用技術: HTML, CSS, JavaScript</p>    
-                                    <a href="https://github.com/wabita/asa_yokoyama_Portfolio" class="url-link" target="_blank" rel="noopener noreferrer"><i class="devicon-github-original"></i>&nbsp;GitHub</a>
+                                        <img src="./img/photo.png" alt="Portfolio Image" class="content-img">
                                     
-                                    <div class="content-row right-img">
-                                        <img src="./img/aboutme.png" alt="Portfolio Image" class="content-img">
+                                    </div>
+                                       　変換例）
+                                    <div class="project-image">
+                                        <img src="./img/combined_images.jpg" class="project-image">
+                                    </div>
+                                    <br>
+                                    <div style="margin-bottom: 20px;">
+                                        <h3>〜ポートフォリオサイト（個人開発）〜</h3>
+                                        <p>⚫︎使用技術: HTML, CSS, JavaScript</p>    
+                                        <a href="https://github.com/wabita/asa_yokoyama_Portfolio" class="url-link" target="_blank" rel="noopener noreferrer"><i class="devicon-github-original"></i>&nbsp;GitHub</a>
                                         
-                                        <div class="content-text">
-                                            <p><strong>【制作の背景】</strong><br>
-                                            既存のサービス（WixやNotion等）を使わず、Webの基礎技術（HTML/CSS/JS）の理解を深めるためにゼロからコーディングを行いました。</p>
-                                            <p><strong>【こだわりポイント】</strong><br>
-                                            「エンジニアリング × アート」という自身の伸ばしたい部分と自信のある部分を表現するため、レトロポップなプロフィール帳のようなデザインにし、見やすくかつ可愛いを実装できたと思います。<br>
-                                            CSS Flexboxによるレスポンシブ対応や、JavaScriptを用いた動的なタイムライン表示など、UXを意識した実装を行いました。</p>
+                                        <div class="content-row">
+                                            
+                                            <div class="content-text">
+                                                <p><strong>【制作の背景】</strong><br>
+                                                既存のサービス（WixやNotion等）を使わず、Webの基礎技術（HTML/CSS/JS）の理解を深めるためにゼロからコーディングを行いました。</p>
+                                                <p><strong>【こだわりポイント】</strong><br>
+                                                「エンジニアリング × アート」という自身の伸ばしたい部分と自信のある部分を表現するため、レトロポップなプロフィール帳のようなデザインにし、見やすくかつ可愛いを実装できたと思います。<br>
+                                                CSS Flexboxによるレスポンシブ対応や、JavaScriptを用いた動的なタイムライン表示など、UXを意識した実装を行いました。</p>
+                                            </div>
+                                               <img src="./img/aboutme.png" alt="Portfolio Image" class="content-img">
                                         </div>
                                     </div>
-                                </div>
 
                             </div>
                         </div>

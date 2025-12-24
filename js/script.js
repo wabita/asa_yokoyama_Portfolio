@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // =========================================
-    // 1. トグルボタン設定
-    // =========================================
+
+    // トグルボタン設定
     const triggers = document.querySelectorAll('.toggle-trigger');
 
     triggers.forEach(trigger => {
@@ -20,10 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // =========================================
-    // 2. メールアドレスの表示設定（修正済み）
-    // =========================================
-    
+    // メールアドレスの表示設定
     const emailContainer = document.getElementById('email-container');
     
     if (emailContainer && typeof MY_EMAIL !== 'undefined') {
@@ -33,11 +29,4 @@ document.addEventListener('DOMContentLoaded', () => {
             </a>
         `;
     }
-
-    // =========================================
-    // 3. 背景ライン処理
-    // =========================================
-    // CSSアニメーションに切り替えたため、
-    // ここにあった handleScroll などの処理は全て削除しました。
-    // これでコードがスッキリし、動作も軽くなります。
 });
