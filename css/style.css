@@ -1,163 +1,203 @@
-@font-face {
-  font-family: 'BokuFont';
-  /* 修正: 絶対パスをやめて、相対パスに変更 */
-  src: url('../fonts/Boku2-Bold.otf');
+/* =========================================
+   変数定義（色を一括管理）
+   ========================================= */
+:root {
+    --main-red: #db1e1e;
+    --bg-cream: #fdf6e3;
+    --text-dark: #444;
+    --accent-orange: #f0caa6;
+    --accent-orange-hover: #ffe4cc; 
+    --icon-color: #e58f67;         /* スキルアイコン */
 }
 
+/* fonts */
 @font-face {
-  font-family: 'YDW'; 
-  src: url('../fonts/YDWbananaslipplus.otf'); 
+    font-family: 'BokuFont';
+    src: url('../fonts/Boku2-Bold.otf');
+}
+@font-face {
+    font-family: 'YDW'; 
+    src: url('../fonts/YDWbananaslipplus.otf'); 
+}
+@font-face {
+    font-family: 'SenobiGothic'; 
+    src: url('../fonts/Senobi-Gothic-Regular.ttf') format('truetype'); 
 }
 
-@font-face {
-  font-family: 'SenobiGothic'; 
-  src: url('../fonts/Senobi-Gothic-Regular.ttf') format('truetype'); 
-}
-
-/* ======== 全体のスタイル ======== */
+/* 全体設定 (Base) */
 body {
-    font-family:'YDW','BokuFont', "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-    background-color:#fdf6e3;
-    color: #444; 
+    font-family: 'YDW', 'BokuFont', "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    background-color: var(--bg-cream);
+    color: var(--text-dark); 
     line-height: 1.7; 
     padding: 20px;
 }
+
 a, h1, h2, h3, .toggle-trigger {
-    color: #db1e1e;
+    color: var(--main-red);
 }
 
 .container {
-    max-width: 900px; /* サイトの最大幅を指定 */
-    margin: 0 auto; /* 中央揃えにする */
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-/* ======== パーツのスタイル ======== */
+/* 画像共通設定 */
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+/* カード */
 .card {
     background-color: #fff;
-    border: 2px solid #db1e1e;
-    border-radius: 10px; /* 枠線の角を少し丸く */
+    border: 2px solid var(--main-red);
+    border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 5px 5px 0px #f0caa6; /* 少し影をつける */
+    box-shadow: 5px 5px 0px var(--accent-orange);
 }
 
-/* ヘッダー全体を「白い看板」のようなデザインにする */
+/* ボタン */
+.profile-link,
+.url-link,
+a[href^="http"] { 
+    display: inline-block;       
+    padding: 5px 15px;           
+    margin: 5px 0;               
+    border: 2px solid var(--main-red);   
+    border-radius: 50px;         
+    background-color: #fff;      
+    color: var(--main-red);              
+    font-weight: bold;
+    text-decoration: none;       
+    transition: all 0.3s ease;   
+    box-shadow: 2px 2px 0px rgba(239, 175, 123, 0.4); 
+}
+
+.profile-link:hover,
+.url-link:hover,
+a[href^="http"]:hover {
+    background-color: var(--main-red);   
+    color: #fff;                 
+    transform: translateY(-2px); 
+    box-shadow: 4px 4px 0px rgba(239, 175, 123, 0.8); 
+}
+
+/* ヘッダー (Header) */
 .header {
-    /* 箱の配置：画面の中央に置く */
     display: flex;
-    justify-content: center; /* 中の文字を左右中央揃え */
-    align-items: center;     /* 上下中央揃え */
-    margin: 0 auto 30px auto; /* 上は0、左右は自動(中央寄せ)、下は30px空ける */
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 30px auto;
     
-    /* 箱の見た目：他のカードと統一感を出す */
-    background-color: #fff;      /* 背景を白くしてグリッドを隠す */
-    border: 2px solid #db1e1e;   /* テーマカラーの枠線 */
-    border-radius: 50px;         /* 丸みを帯びたカプセル型にする */
+    background-color: #fff;
+    border: 2px solid var(--main-red);
+    border-radius: 50px;
     
-    /* 箱のサイズ */
-    width: fit-content;          /* 文字の長さに合わせて箱の大きさを決める */
-    min-width: 300px;            /* 文字が短くても、ある程度の幅（300px）は確保する */
-    padding: 10px 40px;          /* 文字の周りに余裕を持たせる */
+    width: fit-content;
+    min-width: 300px;
+    padding: 10px 40px;
+    box-shadow: 5px 5px 0px var(--accent-orange);
     
-    /* 浮き上がらせる */
-    box-shadow: 5px 5px 0px #f0caa6; /* オレンジ色の影でポップに */
-    
-    /* 背景グリッドより手前に表示 */
     position: relative;
     z-index: 10;
 }
 
-/* 中の文字（About Me） */
 .header h1 {
-    /* フォント設定（変更なし） */
-    font-family: 'YDW','SenobiGothic','BokuFont','Comic Sans MS', cursive, sans-serif;
+    font-family: 'YDW', 'SenobiGothic', 'BokuFont', cursive, sans-serif;
     font-size: 2.5em;
     margin: 0;
-    
-    /* 前回の設定（線など）は全てリセット */
-    border: none;
-    background: none;
-    padding: 0;
-    
-    /* 文字色は赤 */
-    color: #db1e1e;
+    color: var(--main-red);
 }
 
-
-/* 　=======上部セクションのレイアウト ======== */
+/* Profile & Skills */
 .top-section {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
     align-items: center;
+    margin-bottom: 20px;
 }
+
 .profile-table-card { 
     flex: 3; 
 } 
+
 .right-column {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.illustration-card, .skills-card {
-    flex-grow: 0; 
-}
-.illustration-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.skills-card { 
-    min-width: 200px; 
-}
-
-
-/* ===左側のコンテナ ===*/
 /* プロフィール表 */
 .profile-table-wrapper {
-    border: 2px solid #db1e1e; 
+    border: 2px solid var(--main-red); 
     border-radius: 20px;
     overflow: hidden;
     background-color: #fff;
-    box-shadow: 5px 5px 0px #efaf7ba0; 
+    box-shadow: 5px 5px 0px var(--accent-orange); 
 }
+
 .profile-table {
     width: 100%;
     border-collapse: collapse; 
 }
+
 .profile-table th,
 .profile-table td {
     padding: 12px 15px;
     text-align: left;
-    border-bottom: 1px solid #db1e1e;
+    border-bottom: 1px solid var(--main-red);
 }
+
 .profile-table tr:last-child th,
 .profile-table tr:last-child td {
     border-bottom: none;
 }
+
 .profile-table th {
     width: 120px;
-    background-color: #f0caa6;
-    color: #db1e1e;
+    background-color: var(--accent-orange);
+    color: var(--main-red);
     font-weight: bold;
-    border-right: 1px solid #db1e1e;
+    border-right: 1px solid var(--main-red);
 }
 
+/* メールリンク */
 .email-link {
     color: inherit;
     text-decoration: underline;
     text-decoration-skip-ink: none; 
-    text-underline-offset: 3px;     
+    text-underline-offset: 4px;     
     transition: color 0.2s;
 }
 .email-link:hover {
-    color: #db1e1e;
+    color: var(--main-red);
 }
 
-/* ===右側のコンテナ ===*/
-/* アイコン画像 */
+.theme-en {
+    display: block; 
+    font-size: 0.85em;    /* 日本語より少し小さくする（メリハリが出る） */
+    color: #666;          /* 色を少し薄くする（日本語が目立つ） */
+    
+    /* ▼ ここで「日本語との隙間」を調整 */
+    margin-top: 5px;      
+    
+    /* ▼ ここで「英語の行間の狭さ」を調整 */
+    line-height: 1.3;     
+}
+
+/* 右カラム：イラスト＆スキル */
+.illustration-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0; 
+}
+
 .illustration img {
     width: 160px;
     height: 160px;
@@ -165,52 +205,43 @@ a, h1, h2, h3, .toggle-trigger {
     border-radius: 50%;
 }
 
-/* スキル*/
+.skills-card { 
+    min-width: 200px;
+    flex-grow: 0; 
+    margin-bottom: 0;
+}
+
 .skills-card h3 {
     margin-top: 0;      
     margin-bottom: 5px; 
 }
+
 .skills-list {
     list-style: none;
     padding: 0;
     margin-top: 0;
 }
-/* スキルリストのアイコン */
+
 .skills-list i {
     font-size: 1.2em; 
     margin-right: 5px; 
     vertical-align: middle;
-    color: #e58f67 !important;
-}
-
-/* プロフィール表や本文内のリンク用スタイル */
-.profile-link {
-    font-weight: bold;
-    color: inherit;
-    transition: color 0.2s;
-    cursor: pointer;
-}
-
-.profile-link:hover {
-    color: #efaf7b;
-}
-
-.toggle-link{
-    text-decoration: underline;
-    text-decoration-skip-ink: none; 
-    text-underline-offset: 3px;   
+    color: var(--icon-color) !important;
 }
 
 
-/* ======== 縦型タイムラインのデザイン ======== */
+/* =========================================
+   タイムライン (Timeline)
+   ========================================= */
 .timeline-container {
     position: relative;
     padding-left: 50px;
     margin-left: 10px;
-    font-family:'SenobiGothic','YDW','BokuFont', "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    font-family: 'SenobiGothic', 'YDW', 'BokuFont', sans-serif;
     padding-bottom: 40px;
 }
 
+/* 縦の実線 */
 .timeline-container::before {
     content: '';
     position: absolute;
@@ -218,8 +249,10 @@ a, h1, h2, h3, .toggle-trigger {
     top: 10px;
     bottom: 60px;
     width: 3px;
-    background-color: #db1e1e;
+    background-color: var(--main-red);
 }
+
+/* 縦の点線（未来/続き） */
 .timeline-container::after {
     content: '';
     position: absolute;
@@ -227,17 +260,17 @@ a, h1, h2, h3, .toggle-trigger {
     bottom: 10px; 
     width: 3px;   
     height: 50px; 
-    background-image: linear-gradient(to bottom, #db1e1e 50%, transparent 50%);
+    background-image: linear-gradient(to bottom, var(--main-red) 50%, transparent 50%);
     background-size: 3px 10px; 
     background-repeat: repeat-y;
 }
 
-/* 各年代のブロック */
 .timeline-item {
     position: relative;
     margin-bottom: 25px;
 }
 
+/* 年号ラベル */
 .timeline-item::before {
     content: attr(data-year);
     position: absolute;
@@ -246,77 +279,69 @@ a, h1, h2, h3, .toggle-trigger {
     top: 2px;
     background-color: #ffffff; 
     padding: 0 5px;
-    color: #db1e1e;
+    color: var(--main-red);
     font-size: 1.3em;
     font-weight: bold;
     width: max-content;
 }
+
 .timeline-item:last-child {
     margin-bottom: 0;
 }
 
-.image-row {
-    display: flex; 
-    gap: 10px;     
-    margin-top: 15px;
-    justify-content: center;
-}
-.image-row .project-image {
-    width: 30%; 
-    object-fit: contain; 
-    margin: 0; 
-    max-width: none;
-}
-
-/* ======== トグル（開閉ボタン）のデザイン修正 ======== */
+/* トグルボタン（開閉トリガー） */
 .timeline-item .toggle-trigger {
-    display: block; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
     background-color: #fff;       
-    border: 2px solid #db1e1e;    
+    border: 2px solid var(--main-red);    
     border-radius: 8px;           
     padding: 5px 15px;           
     margin-bottom: 10px;          
     margin-left: 15px;
+    
     cursor: pointer;
     user-select: none;
     font-size: 1.1em;
     font-weight: bold;
-    color: #db1e1e;               
+    color: var(--main-red);               
     text-decoration: none;        
     transition: all 0.2s ease;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    
     position: relative;
     z-index: 1;
 }
 
 .timeline-item .toggle-trigger:hover {
-    background-color: #ffe4cc;    
+    background-color: var(--accent-orange-hover);    
     transform: translateY(-2px);  
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1); 
 }
 
+.timeline-item .toggle-trigger.active {
+    background-color: var(--main-red);
+    color: #fff;
+}
+
+/* トグルアイコン (+/-) */
 .timeline-item .toggle-trigger::after {
-    content: '\f067';             
+    content: '\f067'; /* Plus icon */            
     font-family: "Font Awesome 6 Free"; 
     font-weight: 900;             
     font-size: 0.9em;             
     margin-left: 10px;
-    color: #db1e1e;               
+    color: var(--main-red);               
     transition: transform 0.3s;   
 }
 
 .timeline-item .toggle-trigger.active::after {
-    content: '\f068';             
+    content: '\f068'; /* Minus icon */            
     color: #fff;
 }
 
-.timeline-item .toggle-trigger.active {
-    background-color: #db1e1e;
-    color: #fff;
-}
-
+/* トグルの中身 */
 .timeline-item .toggle-content {
     display: none;
     margin-top: 10px;
@@ -326,45 +351,90 @@ a, h1, h2, h3, .toggle-trigger {
     margin-left: 15px;
 }
 
-.url-link {
-    font-size: 0.9em; 
+/* タイムライン内の詳細リスト (Tech List) */
+/* ★追加: HTMLにあってCSSになかったクラス */
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
 }
-.project-image {
-    width: 100%; 
-    max-width: 600px;
-    height: auto;
-    display: block;
-    margin: 10px auto;
+.tech-list li {
+    margin-bottom: 5px;
+}
+.tech-list .category {
+    font-weight: bold;
+    color: var(--main-red);
+    margin-right: 5px;
+}
+
+/* タイムライン内の通常のリスト */
+/* ★追加: インラインスタイルをクラス化 */
+.content-list {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+/* 成果・実績のハイライトボックス */
+/* ★追加: インラインスタイルをクラス化 */
+.achievement-box {
+    background-color: var(--bg-cream);
+    padding: 10px;
+    border-left: 4px solid var(--main-red);
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* 画像横並び用 */
+.image-row {
+    display: flex; 
+    gap: 10px;     
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.image-row .project-image {
+    width: 30%; 
+    object-fit: contain; 
+    margin: 0; 
+    max-width: none; /* 親のmax-width指定を解除 */
     border-radius: 5px;
 }
 
-/* ======== リンクをボタン風にするスタイル ======== */
-.profile-link,
-.url-link,
-a[href^="http"] { 
-    display: inline-block;       
-    padding: 5px 15px;           
-    margin: 5px 0;               
-    border: 2px solid #db1e1e;   
-    border-radius: 50px;         
-    background-color: #fff;      
-    color: #db1e1e;              
-    font-weight: bold;
-    text-decoration: none;       
-    transition: all 0.3s ease;   
-    box-shadow: 2px 2px 0px #efaf7b63; 
+/* 1枚だけの画像用 */
+.project-image {
+    display: block;
+    margin: 10px auto;
+    border-radius: 5px;
+    max-width: 600px; /* 大きすぎないように制限 */
+}
+/* 画像を【左】に配置 */
+.float-img-left {
+  width: 30%; 
+  float: left;            /* 左に寄せる */
+  margin-right: 20px;     /* 画像の右側に余白を作る */
+  margin-bottom: 10px;    /* 下にも少し余白 */
+  width: 150px;
 }
 
-.profile-link:hover,
-.url-link:hover,
-a[href^="http"]:hover {
-    background-color: #db1e1e;   
-    color: #fff;                 
-    transform: translateY(-2px); 
-    box-shadow: 4px 4px 0px #efaf7bc1; 
+/* 画像を【右】に配置したい場合 */
+.float-img-right {
+  float: right;           /* 右に寄せる */
+  margin-left: 20px;      /* 画像の左側に余白を作る */
+  margin-bottom: 10px;
+  width: 150px;
 }
 
+/* 親要素の高さ崩れを防ぐためのおまじない (clearfix) */
+.toggle-content::after {
+  content: "";
+  display: block;
+  clear: both;
+}
 
+/* =========================================
+   レスポンシブ (SP)
+   ========================================= */
 @media screen and (max-width: 768px) {
     .top-section {
         flex-direction: column-reverse;
@@ -374,11 +444,14 @@ a[href^="http"]:hover {
         width: 100%;
         flex: auto; 
     }
+    .image-row .project-image {
+        width: 48%; /* スマホなら2列くらいにする */
+    }
 }
 
 /* =========================================
-   背景：起動アニメーション（CSSのみ）
-========================================= */
+   背景アニメーション (Background Lines)
+   ========================================= */
 .bg-lines-container {
     position: fixed;
     top: 0; left: 0;
@@ -387,11 +460,13 @@ a[href^="http"]:hover {
     pointer-events: none;
     overflow: hidden;
 }
+
 .bg-line {
     position: absolute;
-    background-color: #db1e1e;
+    background-color: var(--main-red);
     opacity: 0.15;
 }
+
 @keyframes growV {
     0%   { height: 0; }
     100% { height: 100vh; } 
@@ -400,6 +475,7 @@ a[href^="http"]:hover {
     0%   { width: 0; }
     100% { width: 100vw; } 
 }
+
 .v-line {
     width: 2.5px;
     height: 0; 
@@ -410,11 +486,13 @@ a[href^="http"]:hover {
     width: 0; 
     animation: growH 2.0s ease-out forwards;
 }
+
 .from-top    { top: 0; }
 .from-bottom { bottom: 0; }
 .from-left   { left: 0; }
 .from-right  { right: 0; }
 
+/* Delay settings */
 .v-line.L-1 { left: 120px; animation-delay: 0s; }
 .h-line.L-1 { top:  120px; animation-delay: 0.5s; }
 .v-line.L-2 { left: 240px; animation-delay: 0.2s; }
@@ -441,3 +519,52 @@ a[href^="http"]:hover {
 .v-line.L-14 { left: 1680px; animation-delay: 0.4s; }
 .v-line.L-15 { left: 1800px; animation-delay: 0.1s; }
 .v-line.L-16 { left: 1920px; animation-delay: 0.6s; }
+
+/* =========================================
+   画像とテキストの横並び設定 (Flexbox)
+   ========================================= */
+
+/* 画像とテキストを横並びにする外枠 */
+.content-row {
+  display: flex;           /* これで横並びになります */
+  align-items: center;     /* 上下を中央揃え（上揃えなら flex-start に変更） */
+  gap: 20px;               /* 画像とテキストの間隔 */
+  margin-bottom: 15px;     /* 下の要素との余白 */
+}
+
+/* 横並びにする画像のスタイル */
+.content-img {
+  width: 30%;            /* 画像の幅を指定（お好みで調整してください） */
+  height: auto;            /* 高さは自動調整 */
+  object-fit: cover;       /* 画像の比率を崩さずトリミング表示 */
+  border-radius: 5px;     /* 角を少し丸くする */
+  flex-shrink: 0;          /* 画面が狭くなっても画像サイズを縮小させない */
+}
+
+/* --- 画像を【右】に配置したい場合 --- */
+/* HTML側で <div class="content-row right-img"> のようにクラスを追加して使います */
+.content-row.right-img {
+  flex-direction: row-reverse; /* 並び順を逆（右が画像、左がテキスト）にする */
+}
+
+
+/* =========================================
+   レスポンシブ調整（スマホ表示）
+   ========================================= */
+/* 既存の @media screen and (max-width: 768px) の中に追加してください */
+@media screen and (max-width: 768px) {
+  /* スマホでは縦並びに戻す設定 */
+  .content-row,
+  .content-row.right-img {
+    flex-direction: column; /* 縦並びにする */
+    align-items: flex-start; /* 左寄せ */
+  }
+  
+  /* スマホでの画像サイズ調整 */
+  .content-img {
+    width: 100%;         /* 幅をコンテナいっぱいに */
+    max-width: 300px;    /* ただしデカすぎないように制限 */
+    margin: 0 auto 15px; /* 中央寄せと下の余白 */
+  }
+}
+
