@@ -370,9 +370,8 @@ a[href^="http"]:hover {
     width: 30%;
     object-fit: contain;
     margin: 0;
-    max-width: none;
+    max-width: none; /* 親のmax-width指定を解除 */
     border-radius: 5px;
-
 }
 
 /* 単体画像のスタイル */
