@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 content.style.display = 'block';
             }
             
-            // ※以前あった setTimeout(handleScroll...) はもう不要なので削除しました
         });
     });
 
