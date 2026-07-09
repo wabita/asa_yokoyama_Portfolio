@@ -67,10 +67,11 @@
                             <tr class="profile-row"><th>連絡先</th><td id="email-container"></td></tr>
                             <tr class="profile-row">
                                 <th>Links</th>
-                                <td><a href="https://github.com/wabita" class="profile-link" target="_blank" rel="noopener noreferrer">GitHub</a></td>
+                                <td><a href="https://github.com/wabita" class="profile-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                                    <a href="https://atcoder.jp/users/wabita" class="profile-link" target="_blank" rel="noopener noreferrer">AtCoder</a></td>
                             </tr> 
                             <tr class="profile-row"><th>生年月日</th><td>2003年 6月 24日</td></tr>
-                            <tr class="profile-row"><th>好きなもの</th><td>イラスト制作・お笑い鑑賞・旅行</td></tr>
+                            <tr class="profile-row"><th>好きなもの</th><td>個人開発・編み物・イラスト制作・お笑い鑑賞・旅行</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -185,7 +186,7 @@
                             <p>急速に進歩するAI技術、特にChatGPTやGeminiなどの大規模言語モデル(LLM)の可能性と、それが抱える「文脈理解」や「論理構成」といった課題に深く興味を持ち、自然言語処理を専門とする現在の研究室を志望しました。</p>
                             <p>この分野の奥深さに魅力を感じ、最新論文の調査やPythonによる検証環境の構築のサイクルを回しながら研究を進めています。<br>
                                 LLMの実用性を高めるための評価手法の確立を目指し、主体的に研究に取り組んでいます。</p>
-                            <a href="./files/研究概要書.pdf" class="url-link" target="_blank" rel="noopener noreferrer">
+                            <a href="./files/research.pdf" class="url-link" target="_blank" rel="noopener noreferrer">
                                 <i class="fas fa-file-pdf"></i>&nbsp;現在行っている研究内容について
                             </a>
                         </div>
@@ -268,6 +269,55 @@
                                             CSS Flexboxによるレスポンシブ対応や、JavaScriptを用いた動的なタイムライン表示など、UXを意識した実装を行いました。</p>
                                         </div>
                                         <img src="./img/aboutme.png" alt="Portfolio Site Image" class="content-img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-year="2026">
+                        <h3 class="toggle-trigger"> 北海道大学大学院入学</h3>
+                        <div class="toggle-content">
+                            <p>大学院に進学し、より実用性を考えた研究に取り組んでいます。<br>
+                            6月には人工知能学会でポスター発表を行いました。外部の人からのフィードバックをいただけた貴重な機会となり、研究に対するモチベーションがとても向上しました。</p>
+                            <p>また、新たに編み物に挑戦し、編み物する人たちのサポートを行うWebアプリの開発も進めています。</p>
+
+                            <h4 class="toggle-trigger"> 2026年度 人工知能学会全国大会（第40回）発表</h4>
+                            <div class="toggle-content">
+                                <a href="./files/JSAI2026_ポスター.pdf" class="url-link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-file-pdf"></i>&nbsp;ポスター資料はこちら
+                                </a>    
+                                <a href="./files/2Yin-B-06.pdf" class="url-link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-file-pdf"></i>&nbsp;発表論文はこちら
+                                </a> 
+                                <a href="https://pub.confit.atlas.jp/ja/event/jsai2026/presentation/2Yin-B-06" class="url-link" target="_blank" rel="noopener noreferrer">講演情報</a> 
+                                <p>〜発表概要〜</p>
+                                <p>近年，プライバシー保護などの観点から，ローカル型LLMへの需要が急増している．しかし，7Bパラメータ程度の軽量モデルは，文順序付けタスクにおいて，GPT-4o等のクラウド型に著しく性能が劣る． 本研究では，日本語物語データセット「DanSto」を対象に，この性能差の解消に取り組む．第一に，評価の信頼性を担保するため，GPTモデルの投票アンサンブルによりデータの解釈の曖昧性を排除し，高信頼な評価基盤を構築する．第二に，軽量モデル特有の「順序バイアス」や「形式崩れ」に対処するため，出力形式をアルファベットリストに簡略化した上でLoRAを用いたSFTを適用する手法を採用する． 実験の結果，本手法を適用したQwen3-8B（5kデータ学習時）は，推論機能を持つベースモデル（PMR64.0%）を上回るPMR70.0%を記録し，GPT-4o（93.0%）に近づく結果を示した．これにより，計算資源の限られたモデルにおいては，長文生成を避け記号操作にリソースを集中させることが推論能力の向上に極めて有効であるという知見を得た．本研究は，計算資源制約下における高精度なAI開発に寄与するものである．</p>
+                            </div>
+
+                            <h4 class="toggle-trigger"> 制作物中アプリについて</h4>
+                            <div class="toggle-content">
+                                <div style="margin-bottom: 60px;"> 
+                                    <h3>〜Memo Board（React個人開発）〜</h3>
+                                    <p>⚫︎使用技術: React, TypeScript</p> 
+                                    <div class="content-row">
+                                        <div class="content-text">
+                                            <p>編み物ユーザーのなかで、ドット絵を編み物で表現する編み方が流行っています。<br>
+                                            私自身も挑戦した際、編み物では線を引くように編むことはできず、ラスタ走査のように編んでいく必要があるため、色を変更するタイミングが少しでもズレるとイラストとして伝わらない品質になってしまうという難しさが存在しました。</p>
+                                            <p>そこで、希望したサイズに対してドット絵を作成することのできるエディター機能と、その絵をどう編んでいけばいいのかをアシストする機能を踏まえたアプリの作成に挑戦しています。</p>
+                                            <p class="section-label">【エディター画面（左）】</p>
+                                            <p>編みたい毛糸の色や色数、どれくらいのサイズで編むかを設定することで、ドット絵を描くことができます。<br>さらに、目標の画像があれば、その画像を読み取って、各ドットの最頻色を取得し設定した毛糸の色に最も近い色にドット絵に変換することも可能です。<br>
+                                            そして、読み取った画像を下書きとして自分で編集することができるので、自分が望んだデザインを実現できます。</p>
+                                            <p class="section-label">【編み物アシスト画面（右）】</p>
+                                            <p>エディター画面で作成したドット絵を編むとき、どのタイミングで色を変更すべきかをチェックボックスで確認しながらあみすすめることができます<br>
+                                            右上の丸いボタンでイラストを回転させることができ、どこから編み始めるかを編集することができます。<br>
+                                            そうして、一段目から編む時、右利きの人なら右から編み始めるので、奇数段なら右から何目この色で編むべきかをチェックボックスで確認することができるので、今自分がどこまで編んだかを確認しながら編み進めることができます。<br>
+                                        左利きの人であったり、ずれが生じて右方向か左方向かがずれてしまったことを考慮して、画面の右ボタンを押す左右に変更できるような使用になっています。</p>
+                                        <p>現在はPC上だけでなく、タブレットやスマートフォン、ペンシルなどに対応した操作に対応した開発に取り組んでいます。</p>
+                                        </div>
+                                    </div>  
+                                    <div class="image-row app-image-row">
+                                        <img src="./img/draw.jpg" alt=" App Image" class="content-img">
+                                        <img src="./img/make.jpg" alt=" App Image" class="content-img">
                                     </div>
                                 </div>
                             </div>

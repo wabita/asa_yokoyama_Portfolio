@@ -374,6 +374,22 @@ a[href^="http"]:hover {
     border-radius: 5px;
 }
 
+.image-row.app-image-row {
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.image-row.app-image-row .content-img {
+    width: 48%;
+    max-width: none;
+}
+
+.section-label {
+    font-weight: bold;
+    color: var(--main-red);
+    margin-bottom: 8px;
+}
+
 /* 単体画像のスタイル */
 .project-image {
     display: block;
